@@ -1,0 +1,1 @@
+Proj4js.defs["EPSG:3003"] = "+title=Gauss Boaga EPSG:3003 +proj=tmerc +lat_0=0+lon_0=9 +k=0.999574 +x_0=1500005 +y_0=0 +ellps=intl +units=m +no_defs";

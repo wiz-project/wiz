@@ -1,2 +1,14 @@
 
 .DS_Store
+
+src/.project
+
+src/.svn/entries
+
+*.prefs
+
+*.svn-base
+
+*.db
+
+src/.svn/format

@@ -1,0 +1,594 @@
+<?php
+
+return array(
+
+	//ROLES
+    'citizen' => array (
+        'type'=>CAuthItem::TYPE_ROLE,
+        'description'=>'Citizen user',
+		'children'=>array(
+			'viewOwnProfile',
+			'updateOwnProfile',
+			'giveEvaluation',
+	        'viewEvaluation',
+		),
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	 
+    'planner' => array (
+        'type'=>CAuthItem::TYPE_ROLE,
+        'description'=>'Planner',
+        'children'=>array(
+			'viewOwnProfile',
+			'updateOwnProfile',
+			'viewNotifications',
+			'createWaterRequest',			
+			'listWaterRequest',			
+			'viewOwnWaterRequest',
+			'updateOwnWaterRequest',
+			'restoreOwnWaterRequest',
+			'saveOwnWaterRequest',
+			'submitOwnWaterRequest',
+			'cancelOwnWaterRequest',
+			'pdfOwnWaterRequest',
+			'shpOwnWaterRequest',
+		),
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+    'wrut' => array (
+        'type'=>CAuthItem::TYPE_ROLE,
+        'description'=>'Water Resource Utility',
+        'children'=>array(
+			'viewOwnProfile',
+			'updateOwnProfile',
+			'viewNotifications',
+			'viewWaterRequest',
+			'listWaterRequest',
+			'updateWaterRequest',
+			'approveWaterRequest',
+			'rejectWaterRequest',
+			'uploadZip',
+			'pdfWaterRequest',
+			'epanetWaterRequest',
+			'uploadEpanet',
+			'shpWaterRequest',
+			'viewSystemParams',
+			'createSystemParam',
+			'updateSystemParam',
+			'loadExcel',
+			'viewFault',
+			'createFault',
+			'updateFault',
+			'viewQuality',
+			'createQuality',
+			'updateQuality'
+		),
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+    'wrua' => array (
+        'type'=>CAuthItem::TYPE_ROLE,
+        'description'=>'Water Resource Utility',
+        'children'=>array(
+			'viewOwnProfile',
+			'updateOwnProfile',
+			'viewNotifications',
+			'viewWaterRequest',
+			'listWaterRequest',
+			'futureWaterRequest',
+			'confirmWaterRequest',
+			'refuseWaterRequest',
+			'uploadZip',
+			'pdfWaterRequest',
+			'shpWaterRequest',
+		),
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'sys_admin' => array (
+        'type'=>CAuthItem::TYPE_ROLE,
+        'description'=>'Can perform all kind of operations',
+        'children'=>array(
+			'viewProfile',
+			'updateProfile',
+			'listProfile',
+			'viewNotifications',
+			'viewSystemParams',
+			'createSystemParam',
+			'updateSystemParam',
+			'loadExcel',
+			'viewFault',
+			'createFault',
+			'updateFault',
+			'viewQuality',
+			'createQuality',
+			'updateQuality'
+		),
+        'bizRule'=>'',
+        'data'=>''
+    ),
+    'developer' => array (
+        'type'=>CAuthItem::TYPE_ROLE,
+        'description'=>'Developer',
+        'children'=>array(
+			'viewPlugins',
+			'enablePlugins',
+			'disablePlugins',
+			'uploadPlugins',
+		),
+        'bizRule'=>'',
+        'data'=>''
+    ), 
+
+	//TASKS
+	'viewOwnProfile' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can view own profile',
+		'children'=>array(
+            'viewProfile'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["users"]->username;',
+        'data'=>''
+    ),
+
+	'updateOwnProfile' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can update own profile',
+		'children'=>array(
+            'updateProfile'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["users"]->username;',
+        'data'=>''
+    ),
+
+	'giveEvaluation' => array (
+		'type' => CAuthItem::TYPE_TASK,
+		'description' => 'Can give an evaluation of water service',
+		'children' => array (),
+		'bizRule' => '',
+		'data' => '',
+	),
+	
+	'viewEvaluation' => array (
+		'type' => CAuthItem::TYPE_TASK,
+		'description' => 'Can view posted evaluations',
+		'children' => array (),
+		'bizRule' => '',
+		'data' => '',
+	),
+	
+	'viewOwnWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can view own water request',
+		'children'=>array(
+            'viewWaterRequest'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["waterRequest"]->username;',
+        'data'=>''
+    ),
+
+	'updateOwnWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can update own water request',
+		'children'=>array(
+            'updateWaterRequest'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["waterRequest"]->username;',
+        'data'=>''
+    ),
+
+	'saveOwnWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can update own water request',
+		'children'=>array(
+            'saveWaterRequest'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["waterRequest"]->username;',
+        'data'=>''
+    ),
+
+	'restoreOwnWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can rrestore own water request',
+		'children'=>array(
+            'restoreWaterRequest'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["waterRequest"]->username;',
+        'data'=>''
+    ),
+    
+	'submitOwnWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can update own water request',
+		'children'=>array(
+            'submitWaterRequest'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["waterRequest"]->username;',
+        'data'=>''
+    ),
+
+	'cancelOwnWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can update own water request',
+		'children'=>array(
+            'cancelWaterRequest'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["waterRequest"]->username;',
+        'data'=>''
+    ),
+
+	'pdfOwnWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can update own water request',
+		'children'=>array(
+            'pdfWaterRequest'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["waterRequest"]->username;',
+        'data'=>''
+    ),
+
+	'shpOwnWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can download own water request shape',
+		'children'=>array(
+            'shpWaterRequest'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["waterRequest"]->username;',
+        'data'=>''
+    ),
+
+	'viewOwnNotifications' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can view own notifications',
+		'children'=>array(
+            'viewNotifications'
+        ),
+        'bizRule'=>'return Yii::app()->user->id==$params["user"]->username;',
+        'data'=>''
+    ),
+	
+	'viewSystemParams' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can view all system params',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'createSystemParam' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can create a new system param',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'updateSystemParam' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can update an existing system param',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'loadExcel' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can upload a .xls file',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'viewFault' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can view all faults',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'createFault' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can create a new fault',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'updateFault' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can update an existing fault',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'viewQuality' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can view all qualities',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'createQuality' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can create a new quality',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'updateQuality' => array (
+        'type'=>CAuthItem::TYPE_TASK,
+        'description'=>'Can update an existing quality',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	//OPERATIONS
+	'viewProfile' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can view a profile',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'updateProfile' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can update a profile',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'listProfile' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can list all profiles',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'giveEvaluation' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can give an evaluation of water service',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'viewEvaluation' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can view posted evaluations',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'createWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can create a waterRequest',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'viewWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can view a waterRequest',
+        'bizRule'=>'',
+        'data'=>''
+    ),	
+
+	'updateWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can update a waterRequest',
+        'bizRule'=>'return $params["waterRequest"]->isEditable();',
+        'data'=>''
+    ),
+
+	'listWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can view the index',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'saveWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can set water request status to saved',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'restoreWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can set water request status to saved',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+    
+	'cancelWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can set cancelled status',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'submitWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can set submitted status',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'rejectWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can set rejected status',
+        'bizRule'=>'return (($params["waterRequest"]->phase==2) || ($params["waterRequest"]->phase==3));',
+        'data'=>''
+    ),
+
+	'approveWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can set approved status',
+        'bizRule'=>'return (($params["waterRequest"]->phase==2) || ($params["waterRequest"]->phase==3));',
+        'data'=>''
+    ),
+
+	'futureWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can set in_future status',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'confirmWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can set confirmed status',
+        'bizRule'=>'return (($params["waterRequest"]->phase==2) || ($params["waterRequest"]->phase==3));',
+        'data'=>''
+    ),
+
+	'refuseWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can set refused status',
+        'bizRule'=>'return (($params["waterRequest"]->phase==2) || ($params["waterRequest"]->phase==3));',
+        'data'=>''
+    ),
+
+	'pdfWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can generate waterRequest pdf',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'epanetWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can generate waterRequests epanet file',
+        'bizRule' => 'return $params["waterRequest"]->phase==3;',
+        'data'=>''
+    ),
+
+	'uploadEpanet' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can upload an inp file',
+        'bizRule' => '',
+        'data'=>''
+    ),
+
+	'uploadZip' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can upload an archive',
+        'bizRule' => '',
+        'data'=>''
+    ),
+
+	'shpWaterRequest' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can download all waterRequests shapefile',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+	'viewNotifications' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can view a notification',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+    
+    'viewPlugins' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can view plugins list',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+    
+    'enablePlugins' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can enable a plugin',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+    
+    'disablePlugins' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can disable a plugin',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+    
+    'uploadPlugins' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can upload a plugin',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'viewSystemParams' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can view all system params',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'createSystemParam' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can create a new system param',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'updateSystemParam' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can update an existing system param',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'loadExcel' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can upload a .xls file',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'viewFault' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can view all faults',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'createFault' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can create a new fault',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'updateFault' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can update an existing fault',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'viewQuality' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can view all qualities',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'createQuality' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can create a new quality',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+	
+	'updateQuality' => array (
+        'type'=>CAuthItem::TYPE_OPERATION,
+        'description'=>'Can update an existing quality',
+        'bizRule'=>'',
+        'data'=>''
+    ),
+
+);
+
+?>
